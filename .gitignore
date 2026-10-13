@@ -1,0 +1,20 @@
+# Build output
+backend/target/
+frontend/dist/
+frontend/node_modules/
+*.log
+
+# Local evidence uploads (persistent data: back up, never commit)
+backend/storage/
+storage/
+
+# Environment
+.env
+.env.local
+frontend/.env.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store

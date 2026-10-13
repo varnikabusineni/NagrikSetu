@@ -1,0 +1,5 @@
+# Production profile: activate with SPRING_PROFILES_ACTIVE=prod.
+# No defaults for secrets: startup fails if NAGRIK_JWT_SECRET or the database password are missing.
+nagrik:
+  demo:
+    enabled: false

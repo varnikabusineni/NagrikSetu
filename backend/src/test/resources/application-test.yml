@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: ${NAGRIK_TEST_DB_URL:jdbc:postgresql://localhost:5432/nagrik_setu_test}
+    username: ${NAGRIK_TEST_DB_USERNAME:nagrik}
+    password: ${NAGRIK_TEST_DB_PASSWORD:nagrik}
+  flyway:
+    clean-disabled: false
+
+nagrik:
+  security:
+    jwt-secret: test-only-jwt-secret-0123456789abcdef0123456789abcdef
+    rate-limit:
+      auth-per-minute: 1000
+      complaints-per-hour: 1000
+      writes-per-minute: 10000
+  storage:
+    provider: local
+    local:
+      directory: ${java.io.tmpdir}/nagrik-setu-test-evidence
+    orphan-cleanup:
+      enabled: false
+  demo:
+    enabled: false

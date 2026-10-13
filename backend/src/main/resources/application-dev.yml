@@ -1,0 +1,13 @@
+# Local development profile (active by default).
+spring:
+  datasource:
+    password: ${NAGRIK_DB_PASSWORD:nagrik}
+
+nagrik:
+  security:
+    # DEVELOPMENT ONLY. Production must set NAGRIK_JWT_SECRET (the prod profile refuses to start without it).
+    jwt-secret: ${NAGRIK_JWT_SECRET:dev-only-insecure-jwt-secret-change-me-0123456789abcdef}
+  demo:
+    # Seeds clearly labelled Hyderabad demonstration wards, accounts and complaints on first start.
+    enabled: ${NAGRIK_DEMO_ENABLED:true}
+    password: ${NAGRIK_DEMO_PASSWORD:NagrikDemo@2026}
