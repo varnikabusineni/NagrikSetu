@@ -1,0 +1,21 @@
+# Local infrastructure for development: PostgreSQL.
+#   docker compose up -d postgres
+services:
+  postgres:
+    image: postgres:16.4
+    environment:
+      POSTGRES_USER: nagrik
+      POSTGRES_PASSWORD: nagrik
+      POSTGRES_DB: nagrik_setu
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/create-test-db.sql:/docker-entrypoint-initdb.d/10-create-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nagrik -d nagrik_setu"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata:

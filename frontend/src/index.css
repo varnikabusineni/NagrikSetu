@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink-50 text-ink-800 antialiased;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-ink-200 bg-white shadow-card;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-300 bg-white text-ink-800 hover:bg-ink-50;
+  }
+  .btn-ghost {
+    @apply btn text-ink-700 hover:bg-ink-100;
+  }
+  .btn-danger {
+    @apply btn bg-rose-700 text-white hover:bg-rose-800;
+  }
+  .input {
+    @apply block w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20 disabled:bg-ink-100;
+  }
+  .input-error {
+    @apply border-rose-500 focus:border-rose-600 focus:ring-rose-600/20;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-ink-700;
+  }
+  .field-error {
+    @apply mt-1 text-xs font-medium text-rose-700;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .page-title {
+    @apply text-2xl font-bold tracking-tight text-ink-900 sm:text-3xl;
+  }
+}
+
+/* Leaflet: keep maps beneath sticky headers and modals. */
+.leaflet-container {
+  font: inherit;
+  z-index: 0;
+}
+.leaflet-popup-content {
+  margin: 12px 14px;
+}
+.marker-pin {
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.marker-cluster-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(18, 96, 62, 0.9);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
