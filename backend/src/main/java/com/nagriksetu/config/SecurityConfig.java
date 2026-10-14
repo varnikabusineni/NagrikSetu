@@ -52,6 +52,7 @@ public class SecurityConfig {
                         // Evidence content authorises each request itself (bearer token or user-bound signed URL).
                         .requestMatchers(HttpMethod.GET, "/api/evidence/*/content").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/official/**").hasAnyRole("WARD_HEAD", "DEPARTMENT_HEAD", "OFFICER", "ADMIN")
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll())

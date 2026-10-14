@@ -8,8 +8,9 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 5173,
       // In development the API is proxied, so the browser talks to a single origin.
+      // 127.0.0.1 (not localhost): on Windows, Node may resolve localhost to IPv6 ::1 first.
       proxy: {
-        '/api': { target: env.VITE_DEV_API_PROXY || 'http://localhost:8080', changeOrigin: true },
+        '/api': { target: env.VITE_DEV_API_PROXY || 'http://127.0.0.1:8080', changeOrigin: true },
       },
     },
     test: { environment: 'node' },

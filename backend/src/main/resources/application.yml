@@ -52,7 +52,7 @@ nagrik:
   security:
     jwt-secret: ${NAGRIK_JWT_SECRET:}
     jwt-expiry-minutes: ${NAGRIK_JWT_EXPIRY_MINUTES:480}
-    cors-allowed-origins: ${NAGRIK_CORS_ALLOWED_ORIGINS:http://localhost:5173}
+    cors-allowed-origins: ${NAGRIK_CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
     # Signed evidence URLs let <img> tags load protected photos without exposing the JWT.
     evidence-url-ttl-seconds: ${NAGRIK_EVIDENCE_URL_TTL_SECONDS:600}
     rate-limit:

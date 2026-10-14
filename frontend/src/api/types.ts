@@ -256,3 +256,31 @@ export interface ApiErrorBody {
   message: string;
   fieldErrors?: Record<string, string>;
 }
+
+export interface AdminAccount {
+  id: number;
+  fullName: string;
+  email: string;
+  phone?: string;
+  role: RoleCode;
+  roleName: string;
+  wardId?: number;
+  wardName?: string;
+  departmentId?: number;
+  departmentName?: string;
+  enabled: boolean;
+  createdAt: string;
+  lastLoginAt?: string;
+}
+
+export interface AuditEntry {
+  id: number;
+  createdAt: string;
+  action: string;
+  entityType: string;
+  entityId?: string;
+  actorName: string;
+  actorEmail?: string;
+  details?: string;
+  ipAddress?: string;
+}

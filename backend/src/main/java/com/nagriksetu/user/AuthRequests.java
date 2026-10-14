@@ -11,8 +11,8 @@ public final class AuthRequests {
     private AuthRequests() {
     }
 
-    static final String PHONE_REGEX = "^(\\+?91[\\s-]?)?[6-9]\\d{4}[\\s-]?\\d{5}$";
-    static final String PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\\d).{8,72}$";
+    public static final String PHONE_REGEX = "^(\\+?91[\\s-]?)?[6-9]\\d{4}[\\s-]?\\d{5}$";
+    public static final String PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\\d).{8,72}$";
 
     public record Register(
             @NotBlank(message = "Name is required") @Size(min = 2, max = 120) String fullName,

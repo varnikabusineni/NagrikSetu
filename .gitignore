@@ -18,3 +18,6 @@ frontend/.env.local
 .vscode/
 *.iml
 .DS_Store
+
+# TypeScript incremental build info
+*.tsbuildinfo

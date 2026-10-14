@@ -1,4 +1,4 @@
-import { Bell, ClipboardList, LayoutDashboard, LogOut, Map, Menu, PlusCircle, ShieldCheck, User as UserIcon, Users, X } from 'lucide-react';
+import { Bell, ClipboardList, Cog, LayoutDashboard, LogOut, Map, Menu, PlusCircle, ShieldCheck, User as UserIcon, Users, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
@@ -6,7 +6,7 @@ import { useNotifications } from '../hooks/NotificationContext';
 import { Logo } from './Logo';
 
 export function Layout() {
-  const { user, logout, isOfficial } = useAuth();
+  const { user, logout, isOfficial, hasRole } = useAuth();
   const { unread } = useNotifications();
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +19,7 @@ export function Layout() {
         { to: '/official', label: 'Work Queue', icon: ShieldCheck, end: true },
         { to: '/community', label: 'Community', icon: Users },
         { to: '/map', label: 'Map', icon: Map },
+        ...(hasRole('ADMIN') ? [{ to: '/admin', label: 'Admin', icon: Cog }] : []),
       ]
     : [
         { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },

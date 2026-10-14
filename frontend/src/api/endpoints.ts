@@ -1,6 +1,8 @@
 import { api } from './client';
 import type {
+  AdminAccount,
   AppNotification,
+  AuditEntry,
   AuthResponse,
   Category,
   CitizenDashboard,
@@ -16,6 +18,7 @@ import type {
   OfficialStats,
   Page,
   Priority,
+  RoleCode,
   User,
   Ward,
 } from './types';
@@ -142,4 +145,25 @@ export const officialApi = {
   duplicateFlags: () => api.get<DuplicateFlag[]>('/api/official/duplicate-flags').then((r) => r.data),
   reviewDuplicate: (flagId: number, confirm: boolean) =>
     api.post(`/api/official/duplicate-flags/${flagId}/${confirm ? 'confirm' : 'dismiss'}`),
+};
+
+export interface OfficialAccountInput {
+  fullName: string;
+  phone: string;
+  role: RoleCode;
+  wardId?: number;
+  departmentId?: number;
+}
+
+export const adminApi = {
+  accounts: (params: { role?: RoleCode; q?: string; includeCitizens?: boolean }) =>
+    api.get<AdminAccount[]>('/api/admin/accounts', { params }).then((r) => r.data),
+  create: (input: OfficialAccountInput & { email: string; password: string }) =>
+    api.post<AdminAccount>('/api/admin/accounts', input).then((r) => r.data),
+  update: (id: number, input: OfficialAccountInput) => api.put<AdminAccount>(`/api/admin/accounts/${id}`, input).then((r) => r.data),
+  setEnabled: (id: number, enabled: boolean) =>
+    api.post<AdminAccount>(`/api/admin/accounts/${id}/status`, { enabled }).then((r) => r.data),
+  resetPassword: (id: number, newPassword: string) => api.post(`/api/admin/accounts/${id}/password`, { newPassword }),
+  audit: (page = 0, action?: string) =>
+    api.get<Page<AuditEntry>>('/api/admin/audit', { params: { page, size: 25, action: action || undefined } }).then((r) => r.data),
 };

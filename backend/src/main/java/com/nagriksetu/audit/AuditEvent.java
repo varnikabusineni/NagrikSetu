@@ -72,6 +72,10 @@ public class AuditEvent {
         return details;
     }
 
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
     public Instant getCreatedAt() {
         return createdAt;
     }

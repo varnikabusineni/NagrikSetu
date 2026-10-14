@@ -112,7 +112,7 @@ public class AuthService {
         return email.trim().toLowerCase(Locale.ROOT);
     }
 
-    static String normalisePhone(String phone) {
+    public static String normalisePhone(String phone) {
         String digits = phone.replaceAll("[^0-9]", "");
         return digits.length() == 12 && digits.startsWith("91") ? "+91" + digits.substring(2) : "+91" + digits;
     }

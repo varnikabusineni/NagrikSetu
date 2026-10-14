@@ -307,6 +307,14 @@ public class DemoDataSeeder {
         officialService.startWork(p("officer.electrical"), c12.id(), "Crane booked to straighten and re-anchor the pole");
         backdate(c12.id(), 4);
 
+        // 13. Open pothole near Cyber Towers (Madhapur): lets a live demo report trigger the duplicate suggestion.
+        var c13 = report("arjun.reddy", "Potholes on the service road next to Cyber Towers",
+                "Several potholes have opened up on the service road beside Cyber Towers. Cabs swerve into the main road to avoid them.",
+                "POTHOLE", "Madhapur", "Service road beside Cyber Towers, Hitech City", 17.4509, 78.3820, true, road, 1);
+        communityService.upvote(p("fatima.khan"), c13.id());
+        communityService.follow(p("fatima.khan"), c13.id());
+        backdate(c13.id(), 1);
+
         communityService.upvote(p("fatima.khan"), c1.id());
         communityService.upvote(p("priya.sharma"), c4.id());
         communityService.upvote(p("fatima.khan"), c4.id());

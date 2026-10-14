@@ -16,6 +16,7 @@ const MapPage = lazy(() => import('./pages/MapPage'));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const OfficialQueuePage = lazy(() => import('./pages/official/OfficialQueuePage'));
+const AdminPage = lazy(() => import('./pages/admin/AdminPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function PublicOnly({ children }: { children: JSX.Element }) {
@@ -45,6 +46,9 @@ export function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route element={<ProtectedRoute roles={['WARD_HEAD', 'DEPARTMENT_HEAD', 'OFFICER', 'ADMIN']} />}>
               <Route path="/official" element={<OfficialQueuePage />} />
+            </Route>
+            <Route element={<ProtectedRoute roles={['ADMIN']} />}>
+              <Route path="/admin" element={<AdminPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
