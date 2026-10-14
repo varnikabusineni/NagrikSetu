@@ -69,7 +69,7 @@ export function errorMessage(error: unknown, fallback = 'Something went wrong. P
     if (!error.response) return 'Cannot reach the Nagrik Setu server. Check your connection and try again.';
     // A 5xx without our JSON body comes from a proxy (e.g. the Vite dev server) that could not reach the API.
     if (error.response.status >= 500) {
-      return 'Cannot reach the Nagrik Setu server. Make sure the backend is running (cd backend && mvn spring-boot:run) and try again.';
+      return 'Cannot reach the Nagrik Setu server. Start the backend (scripts\\windows\\start-backend.cmd), wait until it says "Started NagrikSetuApplication", then try again.';
     }
     if (error.response.status === 413) return 'The selected photos are too large to upload together.';
   }
